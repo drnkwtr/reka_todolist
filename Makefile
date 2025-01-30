@@ -21,10 +21,8 @@ get-perms:
 	chmod -R guo+w storage
 
 npm-install:
-	#./vendor/bin/sail npm install
 	docker-compose exec -it laravel.test npm install
-	./vendor/bin/sail npm run build
-
+	docker-compose exec -it laravel.test npm run build
 migrate-and-clear-cache:
 	./vendor/bin/sail php artisan migrate:fresh --seed
 	./vendor/bin/sail php artisan cache:clear
