@@ -1,4 +1,4 @@
-start: copy_env composer-install sail get-perms npm-install migrate
+start: copy_env composer-install sail get-perms npm-install migrate-and-clear-cache
 
 copy_env:
 	cp .env.example .env
@@ -17,11 +17,11 @@ sail:
 get-perms:
 	chmod -R gu+w storage
 	chmod -R guo+w storage
-	./vendor/bin/sail php artisan cache:clear
 
 npm-install:
 	./vendor/bin/sail npm install
 	./vendor/bin/sail npm run build
 
-migrate:
+migrate-and-clear-cache:
 	./vendor/bin/sail php artisan migrate:fresh --seed
+	./vendor/bin/sail php artisan cache:clear
