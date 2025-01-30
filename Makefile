@@ -15,6 +15,8 @@ sail:
 	./vendor/bin/sail up -d
 
 get-perms:
+	sudo chown -R $(USER):$(USER) .
+	sudo chmod -R 755 .
 	chmod -R gu+w storage
 	chmod -R guo+w storage
 
