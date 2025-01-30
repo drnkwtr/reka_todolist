@@ -14,11 +14,11 @@ composer-install:
 sail:
 	./vendor/bin/sail up -d
 
-get-perms:
+#get-perms:
 #	chmod -R gu+w storage
 #	chmod -R guo+w storage
-	chmod -R 775 storage
-	chmod -R 775 bootstrap/cache
+#	chmod -R 775 storage
+#	chmod -R 775 bootstrap/cache
 
 npm-install:
 	docker-compose exec -it laravel.test npm install
