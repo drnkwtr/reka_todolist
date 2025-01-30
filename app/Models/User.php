@@ -24,6 +24,7 @@ class User extends Authenticatable
         'api_token'
     ];
 
+
     /**
      * The attributes that should be hidden for serialization.
      *
