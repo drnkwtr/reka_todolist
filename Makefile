@@ -1,4 +1,4 @@
-start: copy_env composer-install sail npm-install migrate
+start: copy_env composer-install sail get-perms npm-install migrate
 
 copy_env:
 	cp .env.example .env
