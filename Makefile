@@ -45,3 +45,9 @@ production:
 	chmod -R guo+w storage
 	chmod -R 775 storage
 	chmod -R 775 bootstrap/cache
+
+production_down:
+	docker-compose -f docker-compose.prod.yml down
+
+production_down:
+	docker-compose -f docker-compose.prod.yml up -d
