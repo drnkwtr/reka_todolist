@@ -14,15 +14,16 @@ composer-install:
 sail:
 	./vendor/bin/sail up -d
 
-#get-perms:
-#	chmod -R gu+w storage
-#	chmod -R guo+w storage
-#	chmod -R 775 storage
-#	chmod -R 775 bootstrap/cache
+get-perms:
+	chmod -R gu+w storage
+	chmod -R guo+w storage
+	chmod -R 775 storage
+	chmod -R 775 bootstrap/cache
 
 npm-install:
 	docker-compose exec -it laravel.test npm install
 	docker-compose exec -it laravel.test npm run build
+
 migrate-and-clear-cache:
 	./vendor/bin/sail php artisan migrate:fresh --seed
 	./vendor/bin/sail php artisan cache:clear
