@@ -14,6 +14,11 @@ composer-install:
 sail:
 	./vendor/bin/sail up -d
 
+get-perms:
+	chmod -R gu+w storage
+	chmod -R guo+w storage
+	./vendor/bin/sail php artisan cache:clear
+
 npm-install:
 	./vendor/bin/sail npm install
 	./vendor/bin/sail npm run build
