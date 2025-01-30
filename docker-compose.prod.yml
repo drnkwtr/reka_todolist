@@ -1,0 +1,38 @@
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - 6970:80
+    volumes:
+      - ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./:/var/www/forblitz
+    depends_on:
+      - php
+    restart: always
+  php:
+    build:
+      context: .docker/dockerfiles
+      dockerfile: php.Dockerfile
+    volumes:
+      - ./:/var/www/forblitz
+      - ./.docker/php/php.ini:/usr/local/etc/php/php.ini
+    restart: always
+  composer:
+    build:
+      context: .docker/dockerfiles
+      dockerfile: composer.Dockerfile
+    volumes:
+      - ./:/var/www/forblitz
+  artisan:
+    build:
+      context: .docker/dockerfiles
+      dockerfile: php.Dockerfile
+    volumes:
+      - ./:/var/www/forblitz
+    entrypoint: [ "php", "/var/www/forblitz/artisan" ]
+  npm:
+    image: node:20-alpine
+    volumes:
+      - ./:/var/www/forblitz
+    working_dir: /var/www/forblitz
+    entrypoint: [ "npm" ]
