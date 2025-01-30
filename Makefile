@@ -28,7 +28,7 @@ migrate_and_clear_cache:
 	./vendor/bin/sail php artisan migrate:fresh --seed
 	./vendor/bin/sail php artisan cache:clear
 
-production:
+prod:
 	git pull
 	docker-compose -f docker-compose.prod.yml up -d
 	docker-compose -f docker-compose.prod.yml run composer install --no-interaction --prefer-dist --optimize-autoloader --no-dev --ignore-platform-req=ext-exif
@@ -46,8 +46,8 @@ production:
 	chmod -R 775 storage
 	chmod -R 775 bootstrap/cache
 
-production_down:
+prod_down:
 	docker-compose -f docker-compose.prod.yml down
 
-production_down:
+prod_up:
 	docker-compose -f docker-compose.prod.yml up -d
